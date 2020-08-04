@@ -1,24 +1,23 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { useRef, useEffect } from 'react';
 import './App.css';
+import { ReactComponent as FriendsSvg } from './assets/friends_online.svg';
+import gsap from 'gsap';
 
 function App() {
+  const wrapper = useRef(null);
+
+  useEffect(() => {
+    const [ elements ] = wrapper.current.children;
+    const user = elements.getElementById('user'); 
+    const friend1 = elements.getElementById('friend1'); 
+    const friend2 = elements.getElementById('friend2'); 
+    const friend3 = elements.getElementById('friend3'); 
+    gsap.set([user, friend1, friend2, friend3], {autoAlpha: 0});
+  });
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div ref={wrapper} className="App">
+      <FriendsSvg />
     </div>
   );
 }
