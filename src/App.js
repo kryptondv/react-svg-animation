@@ -39,7 +39,7 @@ function App() {
     )
     
     ;
-  });
+  }, []);
 
   return (
     <div ref={wrapper} className="App">
