@@ -14,7 +14,7 @@ function App() {
     const friend2 = elements.getElementById('friend2');
     const friend3 = elements.getElementById('friend3');
 
-    gsap.set([user, friend1, friend2, friend3], {
+    gsap.set([user, friend1, friend2, ...friend3.children], {
       autoAlpha: 0,
       transformOrigin: 'center',
     });
@@ -33,9 +33,9 @@ function App() {
       { scale: 0, y: '+=100' },
       { duration: 0.5, scale: 1, y: '-=100', autoAlpha: 1 }
     ).fromTo(
-      friend3,
+      friend3.children,
       { scale: 0, y: '+=100' },
-      { duration: 0.5, scale: 1, y: '-=100', autoAlpha: 1 }
+      { duration: 2, scale: 1, y: '-=100', autoAlpha: 1, stagger: 0.1 }
     )
     
     ;
